@@ -14,3 +14,42 @@ Account.prototype.withdraw = function(withdrawAmount) {
      parseInt(this.balance -= withdrawAmount);
      return this.balance;
 }
+
+function resetFields() {
+    $("input#new-user-name").val("");
+    $("input#new-balance").val("");
+    $("input#deposit-amount").val(0);
+    $("input#withdraw-amount").val(0);
+}
+
+//jQuery starts here
+$(document).ready(function() {
+    var newAccount;
+
+    $("form#new-account").submit(function(event) {
+        event.preventDefault();
+
+        var inputtedUserName = $("input#new-user-name").val();
+        var inputtedBalance = parseInt($("input#new-balance").val());
+
+        newAccount = new Account(inputtedUserName, inputtedBalance);
+
+        $("#show-balance").show();
+        $(".current-balance").text(newAccount.balance);
+    });
+
+    $("form#update-balance").submit(function(event) {
+        event.preventDefault();
+
+        var inputtedDepositAmount = parseInt($("input#deposit-amount").val());
+        var inputtedWithdrawAmount = parseInt($("input#withdraw-amount").val());
+        console.log(inputtedDepositAmount);
+        newAccount.deposit(inputtedDepositAmount);
+        newAccount.withdraw(inputtedWithdrawAmount);
+
+        $("#show-balance").show();
+        $(".current-balance").text(newAccount.balance);
+
+    resetFields();
+    });
+});
