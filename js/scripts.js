@@ -45,9 +45,9 @@ $(document).ready(function() {
         var inputtedWithdrawAmount = parseInt($("input#withdraw-amount").val());
         console.log(inputtedDepositAmount);
 
-        //var count = inputtedDepositAmount.
+        var count = parseInt(inputtedDepositAmount % 100000);
         if(inputtedDepositAmount >= 1000000) {
-            for(var i = 0; i <= 50; i++) {
+            for(var i = 0; i <= count; i++) {
                 $("#dance-banana").append(
                     "<img src='http://images5.fanpop.com/image/photos/30600000/Banana-gif-bananas-30667445-140-140.gif'>"
                 );
