@@ -44,8 +44,20 @@ $(document).ready(function() {
         var inputtedDepositAmount = parseInt($("input#deposit-amount").val());
         var inputtedWithdrawAmount = parseInt($("input#withdraw-amount").val());
         console.log(inputtedDepositAmount);
-        newAccount.deposit(inputtedDepositAmount);
-        newAccount.withdraw(inputtedWithdrawAmount);
+
+        if(inputtedDepositAmount >= 1000000) {
+            newAccount.deposit(inputtedDepositAmount);
+            $("#dance-banana").fadeIn("slow");
+        } else {
+            newAccount.deposit(inputtedDepositAmount);
+            $("#dance-banana").fadeOut("slow");
+        }
+
+        if(inputtedWithdrawAmount > newAccount.balance) {
+            alert("Insufficient Bananas!");
+        } else {
+            newAccount.withdraw(inputtedWithdrawAmount);
+        }
 
         $("#show-balance").show();
         $(".current-balance").text(newAccount.balance);
