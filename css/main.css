@@ -10,7 +10,7 @@
 body {
     background-image:url(http://www.unitedfreshservices.com/content/01-services_bananen_rijperij/banana_ripening.jpg);
     background-position:center;
-    background-size: 200%;
+    background-size: cover;
     background-repeat:no-repeat;
     color:white;
     text-shadow:1px 1px 5px black;
